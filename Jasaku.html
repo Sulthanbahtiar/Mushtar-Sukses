@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasa Editing 30 Ribuan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #0a7d0a;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .fitur {
+      margin-left: 20px;
+      line-height: 1.6;
+    }
+    .button {
+      background: #0a7d0a;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .button:hover {
+      background: #056505;
+    }
+    #countdown {
+      color: #d40000;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CUMA 30 RIBUAN?! SERIUS?</h1>
+  <p>Iya, kamu nggak salah baca. Semua jasa editing video & foto premium yang biasanya sampai 140 ribuan, sekarang cuma 30 ribuan aja!</p>
+
+  <div class="section">
+    <strong>Promo berakhir dalam:</strong> <span id="countdown"></span>
+  </div>
+
+  <button class="button" onclick="pesanSekarang()">Pesan Sekarang</button>
+
+  <div class="section">
+    <h2>JASA EDITING VIDEO</h2>
+    <div class="fitur">
+      • Video Reels / TikTok (maks. 3 menit)<br>
+      • Video Cinematic (1–3 menit)<br>
+      • Video Iklan Produk / Branding UMKM<br>
+      • dll.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>JASA EDITING FOTO</h2>
+    <div class="fitur">
+      • Retouch Foto Produk<br>
+      • Edit Foto Prewedding / Wedding<br>
+      • Desain Feed Instagram / Carousel<br>
+      • dll.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>FITUR LANJUTAN EDITING VIDEO</h2>
+    <div class="fitur">
+      • Subtitle Otomatis + Highlight Kata Penting<br>
+      • Ubah Format Video (Vertikal / Horizontal)<br>
+      • Template Konten Harian (Editable Video)<br>
+      • dll.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>FITUR LANJUTAN EDITING FOTO</h2>
+    <div class="fitur">
+      • Foto 3D / Efek Parallax<br>
+      • AI Headshot (Selfie Jadi Formal)<br>
+      • Konten Interaktif (Swipe / Tap / Scroll)<br>
+      • dll.
+    </div>
+  </div>
+
+  <script>
+    function pesanSekarang() {
+      const nomor = "6281234567890"; // Ganti dengan nomor WhatsApp kamu
+      const pesan = "Halo! Saya mau pesan jasa edit 30 ribuan.";
+      const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+      window.open(url, '_blank');
+    }
+
+    function hitungMundurPromo() {
+      const sekarang = new Date();
+      const batas = new Date();
+      batas.setDate(sekarang.getDate() + 1);
+      batas.setHours(19, 0, 0, 0);
+
+      const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const selisih = batas - now;
+
+        if (selisih < 0) {
+          clearInterval(interval);
+          document.getElementById("countdown").innerText = "Promo berakhir!";
+          return;
+        }
+
+        const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+        const detik = Math.floor((selisih % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerText =
+          `${jam}j ${menit}m ${detik}d`;
+      }, 1000);
+    }
+
+    hitungMundurPromo();
+  </script>
+
+</body>
+</html>
